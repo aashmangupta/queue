@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/aashmangupta/CLionProjects/myQueue/main.c
+stdio.h
+-
+queue.c
+/Users/aashmangupta/CLionProjects/myQueue/queue.c
+
+/Users/aashmangupta/CLionProjects/myQueue/queue.c
+queue.h
+/Users/aashmangupta/CLionProjects/myQueue/queue.h
+
+/Users/aashmangupta/CLionProjects/myQueue/queue.h
+stdlib.h
+-
+stdio.h
+-
+

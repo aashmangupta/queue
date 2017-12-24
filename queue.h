@@ -10,8 +10,8 @@
 typedef struct queue QUEUE;
 
 extern QUEUE* newQUEUE();                          //Constructor.
-extern QUEUE* enqueue(QUEUE* items, int num);      //Adds value to the back of the line.
-extern QUEUE* dequeue(QUEUE* items);               //Removes value from the front of the line.
+extern void enqueue(QUEUE* items, int val);      //Adds value to the back of the line.
+extern void dequeue(QUEUE* items);               //Removes value from the front of the line.
 extern int peekQUEUE(QUEUE* items);                //Returns value on top of queue.
 extern int sizeQUEUE(QUEUE* items);                //Returns the size of queue.
 extern void printQUEUE(QUEUE* items);              //Prints the entire queue.

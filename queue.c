@@ -5,16 +5,16 @@
 
 struct queue{
     int frontIndex;
-    int backIndex;
+    int rearIndex;
     int size;
-    int filledIndices;
     int* arr;
+    int filledIndices;  //For printing queue
 };
 
 QUEUE* newQUEUE() {
     QUEUE *items = malloc(1 * sizeof(QUEUE));
-    items->frontIndex = 0;
-    items->backIndex = -1;
+    items->frontIndex = -1;
+    items->rearIndex = -1;
     items->size = 1;
     items->arr = malloc(1 * sizeof(int));
     items->filledIndices = 0;
@@ -22,36 +22,58 @@ QUEUE* newQUEUE() {
 }
 
 void enqueue(QUEUE* items, int val) {
-    if (items->filledIndices < items->size) {
-        items->backIndex += 1;
-        if (items->backIndex < items->size) {
-            items->arr[items->backIndex] = val;
-            items->filledIndices += 1;
-        }
-        else {
-            items->backIndex = 0;
-            items->arr[items->backIndex] = val;
-            items->filledIndices += 1;
-        }
+    int flag = isFull(items);      //if flag == 1, then queue is full, else its not.
+
+    if((items->frontIndex == -1) && (items->rearIndex == -1)) {
+        items->frontIndex = 0;
+        items->rearIndex = 0;
+        items->arr[items->rearIndex] = val;
+        items->filledIndices = 1;
+        return;
     }
 
-    else {
-        items->arr = realloc(items->arr, (2 * (items->size * sizeof(int))));
-        items->backIndex += 1;
-        items->arr[items->backIndex] = val;
-        items->filledIndices += 1;
+    else if(flag == 1) {
+        items->arr = realloc(items->arr, 2 * (items->size * sizeof(int)));
         items->size *= 2;
+        items->rearIndex++;
+        items->arr[items->rearIndex] = val;
+        items->filledIndices++;
     }
+    else {
+        items->arr[(items->rearIndex + 1) % items->size] = val;
+        items->rearIndex++;
+        items->filledIndices++;
+    }
+
     return;
 }
 
-void dequeue(QUEUE* items) {
-    items->frontIndex += 1;
-    items->filledIndices -= 1;
+extern void dequeue(QUEUE* items) {
+    items->frontIndex = (items->frontIndex + 1) % items->size;
+    items->filledIndices--;
+    return;
+}
+
+int isFull(QUEUE* items) {
+    if(((items->rearIndex + 1) % items->size) == items->frontIndex) {
+        return 1;
+    }
+    return 0;
 }
 
 void printQUEUE(QUEUE* items) {
-    
+    int temp = items->frontIndex;
+    printf("\nPrinting queue starting from front to rear.\n");
+    for (int i = 0; i < items->filledIndices; i++) {
+        printf("%d ", items->arr[temp]);
+        temp = (temp + 1) % items->size;
+    }
+    printf("\n");
+    return;
+}
+
+extern void peekQUEUE(QUEUE* items) {
+    printf("\nThe front of the queue is %d.\n\n", items->arr[items->frontIndex]);
     return;
 }
 

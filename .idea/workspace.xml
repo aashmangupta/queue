@@ -13,6 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6d76b1fa-3d3d-4d60-84f9-7215c9f43c9d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/myQueue.dir/main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/myQueue.dir/main.c.o" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/myQueue" afterPath="$PROJECT_DIR$/cmake-build-debug/myQueue" />
       <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
       <change beforePath="$PROJECT_DIR$/queue.c" afterPath="$PROJECT_DIR$/queue.c" />
       <change beforePath="$PROJECT_DIR$/queue.h" afterPath="$PROJECT_DIR$/queue.h" />
@@ -169,12 +171,12 @@
       <workItem from="1513991472928" duration="92000" />
       <workItem from="1513991614666" duration="4080000" />
       <workItem from="1514150808626" duration="1084000" />
-      <workItem from="1514232167961" duration="4089000" />
+      <workItem from="1514232167961" duration="4113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9345000" />
+    <option name="totallyTimeSpent" value="9369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />

@@ -33,8 +33,7 @@ void enqueue(QUEUE* items, int val) {
     }
 
     else if(flag == 1) {
-        items->arr = realloc(items->arr, 2 * (items->size * sizeof(int)));
-        items->size *= 2;
+        allocateArr(items);
         items->rearIndex++;
         items->arr[items->rearIndex] = val;
         items->filledIndices++;
@@ -48,9 +47,38 @@ void enqueue(QUEUE* items, int val) {
     return;
 }
 
+void allocateArr(QUEUE* items) {
+    int* temp = malloc(2 * items->size * sizeof(int));
+    int tempFrontInd = items->frontIndex;
+
+    for(int i = 0; i < items->filledIndices; i++) {
+        temp[i] = items->arr[tempFrontInd];
+        tempFrontInd = (tempFrontInd + 1) % items->size;
+    }
+
+    items->arr = realloc(items->arr, 2 * items->size * sizeof(int));
+    items->size *= 2;
+
+    for(int i = 0; i < items->size; i++) {
+        items->arr[i] = 0;
+    }
+
+    for(int i = 0; i < items->filledIndices; i++) {
+        items->arr[i] = temp[i];
+        items->rearIndex = i;
+    }
+
+    items->frontIndex = 0;
+    return;
+}
+
 extern void dequeue(QUEUE* items) {
     items->frontIndex = (items->frontIndex + 1) % items->size;
     items->filledIndices--;
+    if(items->filledIndices == 0) {
+        items->frontIndex = -1;
+        items->rearIndex = -1;
+    }
     return;
 }
 

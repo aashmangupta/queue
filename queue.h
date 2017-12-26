@@ -15,5 +15,5 @@ extern void dequeue(QUEUE* items);                 //Removes value from the fron
 extern void peekQUEUE(QUEUE* items);                //Returns value on top of queue.
 extern void printQUEUE(QUEUE* items);              //Prints the entire queue.
 extern int isFull(QUEUE* items);                   //Returns 1 if items are full.
-
+extern void allocateArr(QUEUE* items);             //Allocates memory for array and copies into a new temp arr.
 #endif //MYQUEUE_QUEUE_H
